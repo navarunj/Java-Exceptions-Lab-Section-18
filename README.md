@@ -31,3 +31,12 @@ holiday date as its order date.
 com.acme.utils package and select New > Java Class.
 
 <img src="./src/main/resources/newJavaClass.png" width="400px">
+
+In the resulting New Java Class window, enter
+HolidayOrdersNotAllowedException, and press Enter. 
+
+<img src="./src/main/resources/HolidayOrders.png" width="400px">
+
+Type "extends Exception" to ensure that the Superclass is java.lang.Exception. 
+
+
