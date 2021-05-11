@@ -97,3 +97,45 @@ exception.
 
 <img src="./src/main/resources/UnhandledException.png" width="600px">
 
+2.2 Update the constructor. The constructor calls on a method that may throw
+a checked exception, and so it must either rethrow or try-catch and handle
+the exception. Surround the offending part of the constructor with a try-catch block. In the catch block, display an appropriate error and exit the
+system with a call to System.exit(0).
+
+```java
+public Order(MyDate d, double amt, String c, Product p, int q) {
+   try {
+       setOrderDate(d);
+   } catch (HolidayOrdersNotAllowedException e){
+       System.out.println("The order date for an order cannot be a holiday! Application closing.");
+       System.exit(0);
+   }
+   orderAmount = amt;
+   customer = c;
+   product = p;
+   quantity = q;
+}
+```
+
+Note: Calling System.exit(0) is rarely an appropriate way to handle an exception.
+Handling an exception usually requires the exception to be logged, informing the user
+of the issue, and then seeking appropriate action from the user (in this case perhaps
+picking a new order date).
+
+2.3 Save your changes to the Order class. Make sure there are no compiler
+errors in any class. Run TestOrders. The application should inform you
+when an illegal order is created and then stop.
+
+```java
+...
+The tax for this order is: 60.0
+The total bill for: 125 ea. Acme Balloon-1401 that is 375.0
+CUBIC_FEET in size for Bugs Bunny is 1040.0
+Order date, 1/1/2012, cannot be set to a holiday!
+The order date for an order cannot be a holiday! Application
+closing.
+```
+
+## Step 3: Submission
+
+Commit and push all your changes to your GitHub repository.
