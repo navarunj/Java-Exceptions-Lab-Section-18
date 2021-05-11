@@ -40,3 +40,60 @@ HolidayOrdersNotAllowedException, and press Enter.
 Type "extends Exception" to ensure that the Superclass is java.lang.Exception. 
 
 <img src="./src/main/resources/extendsException.png" width="600px">
+
+1.2 Add a constructor to the new exception class. In the
+HolidayOrdersNotAllowedException Java editor that opens after creating
+the class, add a constructor to the class. The constructor should be passed
+the offending date and use a call to the super constructor to create the
+appropriate message.
+
+```java
+public HolidayOrdersNotAllowedException(MyDate date){
+  super("Orders are not allowed to be created on: " + date);
+}
+```
+
+## Step 2: Use the new HolidayOrdersNotAllowedException
+
+2.1 Modify the setOrderDate( ) method in Order. In the Package Explorer view,
+double-click on the Order.java file in the com.acme.domain package to open
+the file in a Java editor.
+
+Modify the setOrderDate( ) method to throw a
+HolidayOrdersNotAllowedException when the suggested date is a holiday.
+
+2.1.1 This requires that the method declaration have a “throws
+HolidayOrdersNotAllowedException”.
+
+```java
+public void setOrderDate(MyDate orderDate) throws HolidayOrdersNotAllowedException {
+```
+
+2.1.2 Throwing the exception will require that the Order class imports
+com.acme.utils.HolidayOrdersNotAllowedException.
+
+```java
+import com.acme.utils.HolidayOrdersNotAllowedException;
+```
+
+2.1.3 Modify the body of the if-conditional to create and throw a new
+HolidayOrdersNotAllowedException when the new orderDate is determined to be a
+holiday.
+
+```java
+if (isHoliday(orderDate)) {
+   System.out.println("Order date, " + orderDate + ", cannot be set to a holiday!");
+   throw new HolidayOrdersNotAllowedException(orderDate);
+} else {
+    this.orderDate = orderDate;
+}
+```
+
+2.1.4 Save the new HolidayOrdersNotAllowedException and the Order classes.
+This should result in a compiler error in the Order constructor. As
+HolidayOrdersNotAllowedException is a checked exception, it must be handled by
+all callers of setOrderDate( ). Currently, the constructor does not handle this
+exception.
+
+<img src="./src/main/resources/UnhandledException.png" width="600px">
+
