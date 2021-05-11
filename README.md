@@ -39,4 +39,4 @@ HolidayOrdersNotAllowedException, and press Enter.
 
 Type "extends Exception" to ensure that the Superclass is java.lang.Exception. 
 
-
+<img src="./src/main/resources/extendsException.png" width="400px">
